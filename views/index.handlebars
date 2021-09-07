@@ -37,39 +37,42 @@
 
                 <button class="addBtn" type="submit">ADD</button>
                 <br><br>
-                <div class=inputs>
-                    <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="capetown" value="CA" required>
-                        <label class="radioName" for="capetown">Cape Town</label>
-                    </div>
 
-                    <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="bellville" value="CY" required>
-                        <label class="radioName" for="bellville">Bellville</label>
-                    </div>
-
-                    <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="malmesbury" value="CK" required>
-                        <label class="radioName" for="malmesbury">Malmesbury</label>
-                    </div>
-
-                    <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="stellie" value="CL" required>
-                        <label class="radioName" for="stellenbosch">Stellenbosch</label>
-                    </div>
-
-                    <br><br>
-
-                    <button class="showBtn" type="button">SHOW</button>
-                    <button class="showAllBtn" type="button">SHOW ALL</button>
-                    <button class="resetBtn" type="button">RESET</button>
-
-                    <br><br>
-
-                    <p class="showRegNum" id="showRegNumID">
-                    </p>
-                </div>
             </form>
+
+            <div class=inputs>
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="capetown" value="CA" required>
+                    <label class="radioName" for="capetown">Cape Town</label>
+                </div>
+
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="bellville" value="CY" required>
+                    <label class="radioName" for="bellville">Bellville</label>
+                </div>
+
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="malmesbury" value="CK" required>
+                    <label class="radioName" for="malmesbury">Malmesbury</label>
+                </div>
+
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="stellie" value="CL" required>
+                    <label class="radioName" for="stellenbosch">Stellenbosch</label>
+                </div>
+
+                <br><br>
+
+                <button class="showBtn" type="button">SHOW</button>
+                <button class="showAllBtn" type="button">SHOW ALL</button>
+                <button class="resetBtn" type="button">RESET</button>
+
+                <br><br>
+                {{#each allReg}}
+                <p class="showRegNum" id="showRegNumID">{{this.regnum}}</p>
+                {{/each}}
+
+            </div>
         </section>
     </div>
 
