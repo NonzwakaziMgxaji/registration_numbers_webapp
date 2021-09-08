@@ -41,7 +41,6 @@
             </form>
 
             <form name="theForm2" action="/selectTown" method="POST">
-
                 <div class=inputs>
                     <div class=rad1>
                         <input class="radio" type="radio" name="town" id="capetown" value="capetown" required>
@@ -65,25 +64,21 @@
 
                     <br><br>
 
-
-
                     <button class="showBtn" type="submit">SHOW</button>
                     <button class="showAllBtn" type="button">SHOW ALL</button>
-
+                </div>
             </form>
-            
+
             <form action="/reset" method="POST">
                 <button class="resetBtn" type="submit">RESET</button>
             </form>
             <br><br>
+
             {{#each allReg}}
             <p class="showRegNum" id="showRegNumID">{{this.regnum}}</p>
             {{/each}}
-
+        </section>
     </div>
-    </section>
-    </div>
-
 </body>
 
 </html>
