@@ -22,8 +22,8 @@
 <body>
     <div class="container">
         <section class=regNumWidget>
-            <h1>DOM WIDGET</h1>
-            <h1>REGISTRATION NUMBER LIST</h1>
+            {{!-- <h1>DOM WIDGET</h1> --}}
+            <h1>REGISTRATION NUMBERS WEBAPP</h1>
 
             <form name="theForm" action="/reg_numbers" method="POST">
 
@@ -40,40 +40,48 @@
 
             </form>
 
-            <div class=inputs>
-                <div class=rad1>
-                    <input class="radio" type="radio" name="town" id="capetown" value="CA" required>
-                    <label class="radioName" for="capetown">Cape Town</label>
-                </div>
+            <form name="theForm2" action="/selectTown" method="POST">
 
-                <div class=rad1>
-                    <input class="radio" type="radio" name="town" id="bellville" value="CY" required>
-                    <label class="radioName" for="bellville">Bellville</label>
-                </div>
+                <div class=inputs>
+                    <div class=rad1>
+                        <input class="radio" type="radio" name="town" id="capetown" value="capetown" required>
+                        <label class="radioName" for="capetown">Cape Town</label>
+                    </div>
 
-                <div class=rad1>
-                    <input class="radio" type="radio" name="town" id="malmesbury" value="CK" required>
-                    <label class="radioName" for="malmesbury">Malmesbury</label>
-                </div>
+                    <div class=rad1>
+                        <input class="radio" type="radio" name="town" id="bellville" value="bellville" required>
+                        <label class="radioName" for="bellville">Bellville</label>
+                    </div>
 
-                <div class=rad1>
-                    <input class="radio" type="radio" name="town" id="stellie" value="CL" required>
-                    <label class="radioName" for="stellenbosch">Stellenbosch</label>
-                </div>
+                    <div class=rad1>
+                        <input class="radio" type="radio" name="town" id="malmesbury" value="malmesbury" required>
+                        <label class="radioName" for="malmesbury">Malmesbury</label>
+                    </div>
 
-                <br><br>
+                    <div class=rad1>
+                        <input class="radio" type="radio" name="town" id="stellie" value="stellie" required>
+                        <label class="radioName" for="stellenbosch">Stellenbosch</label>
+                    </div>
 
-                <button class="showBtn" type="button">SHOW</button>
-                <button class="showAllBtn" type="button">SHOW ALL</button>
-                <button class="resetBtn" type="button">RESET</button>
+                    <br><br>
 
-                <br><br>
-                {{#each allReg}}
-                <p class="showRegNum" id="showRegNumID">{{this.regnum}}</p>
-                {{/each}}
 
-            </div>
-        </section>
+
+                    <button class="showBtn" type="submit">SHOW</button>
+                    <button class="showAllBtn" type="button">SHOW ALL</button>
+
+            </form>
+            
+            <form action="/reset" method="POST">
+                <button class="resetBtn" type="submit">RESET</button>
+            </form>
+            <br><br>
+            {{#each allReg}}
+            <p class="showRegNum" id="showRegNumID">{{this.regnum}}</p>
+            {{/each}}
+
+    </div>
+    </section>
     </div>
 
 </body>

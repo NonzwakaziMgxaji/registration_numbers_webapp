@@ -45,12 +45,11 @@ const regRoutes = routes(regiez)
 
 
 app.get('/', regRoutes.home);
-
 app.get('/reg_numbers', function(req, res){
-
 });
-
 app.post('/reg_numbers', regRoutes.display);
+// app.post('/selectTown', regRoutes.selectTheTown);
+app.post('/reset', regRoutes.reset);
 
 const PORT = process.env.PORT || 3014
 
