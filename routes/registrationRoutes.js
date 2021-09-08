@@ -15,6 +15,9 @@ module.exports = function routes(registrationFactory){
         try{
             if (req.body.regText){
                 await registrationFactory.enterReg(req.body.regText)
+                req.flash('feedback', "Registration number successfully added!")
+            } else if (!req.body.regText){
+                req.flash('warning', "Please enter registration number!");
             }
         } catch (error){
             console.log(error);

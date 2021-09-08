@@ -15,9 +15,11 @@ body{
 .regNumWidget{
 	width:50%;
     border: 15px solid #A5ADA7;
-    margin-right: 50px;
+    /* margin-right: 50px; */
     padding: 20px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
+    margin-left: auto;
+  margin-right: auto;
 }
 
 .regNum{
@@ -109,12 +111,26 @@ input[type="text"]{
     margin-right: 10px;
 }
 
+@keyframes errorDisappear {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
 .errorMsg{
     color: red;
     font-weight: bold;
+    animation: errorDisappear 0s ease-in 3s forwards;
 }
 
 .displayFeedback{
     color: green;
     font-weight: bold;
+    animation: errorDisappear 0s ease-in 3s forwards;
 }
+
+/* .resetBtn{
+    margin: 50px;
+} */

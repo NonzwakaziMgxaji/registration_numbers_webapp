@@ -26,13 +26,19 @@
             <h1>REGISTRATION NUMBERS WEBAPP</h1>
 
             <form name="theForm" action="/reg_numbers" method="POST">
+                
+                {{#if messages.warning}}
+                <div class="errorMsg" id="errorMsgID">{{messages.warning}}</div><br><br>
+                {{/if}}
 
-                <span class="errorMsg" id="errorMsgID"></span><br><br>
+                {{#if messages.feedback}}
+                <div class="displayFeedback" id="errorMsgID">{{messages.feedback}}</div><br><br>
+                {{/if}}
 
                 <div class="RegNum">
                     <label for="regN">Registration Number</label>
                     <input class="RegTextbox" type="text" id="regText" name="regText"
-                        placeholder="format: CA 123-456 / CY 123456/ CL 123 456" required>
+                        placeholder="format: CA 123-456 / CY 123456/ CL 123 456">
                 </div><br>
 
                 <button class="addBtn" type="submit">ADD</button>
