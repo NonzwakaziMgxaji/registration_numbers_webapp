@@ -27,12 +27,12 @@ describe('The registration-webapp database', function () {
         assert.equal(1, await registration.countReg())
     });
 
-    it("should be able to display only the registration numbers of selected town", function () {
+    it("should be able to display only the registration numbers of selected town", async function () {
         await registration.enterReg("CA 123456");
         await registration.enterReg("CY 654321");
         await registration.enterReg("CK 789456");
         await registration.enterReg("CA 222222");
-        assert.deepEqual("CA 123456", await registration.selectedTown());
+        assert.deepEqual([{"regnum": "CA 123456"}, {"regnum": "CA 222222"}], await registration.selectedTown("capetown"));
     });
 
     it('should be able to reset the database', async function(){
