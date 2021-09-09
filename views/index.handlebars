@@ -7,26 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/registration_number.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-
     <title>Document</title>
-
-    <script type="text/x-template" class="registrationTemplate">
-        {{#each reg}}
-          <p class="spanClass">{{this}}</p>
-        {{/each}}
-    </script>
-
 </head>
-
 
 <body>
     <div class="container">
         <section class=regNumWidget>
-            {{!-- <h1>DOM WIDGET</h1> --}}
             <h1>REGISTRATION NUMBERS WEBAPP</h1>
 
             <form name="theForm" action="/reg_numbers" method="POST">
-                
+
                 {{#if messages.warning}}
                 <div class="errorMsg" id="errorMsgID">{{messages.warning}}</div><br><br>
                 {{/if}}
@@ -43,36 +33,39 @@
 
                 <button class="addBtn" type="submit">ADD</button>
                 <br><br>
-
             </form>
 
             <form name="theForm2" action="/selectTown" method="POST">
                 <div class=inputs>
+
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="capetown" value="capetown" required>
+                        <input class="radio" type="radio" name="town" id="capetown" value="capetown">
                         <label class="radioName" for="capetown">Cape Town</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="bellville" value="bellville" required>
+                        <input class="radio" type="radio" name="town" id="bellville" value="bellville">
                         <label class="radioName" for="bellville">Bellville</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="malmesbury" value="malmesbury" required>
+                        <input class="radio" type="radio" name="town" id="malmesbury" value="malmesbury">
                         <label class="radioName" for="malmesbury">Malmesbury</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="stellie" value="stellie" required>
+                        <input class="radio" type="radio" name="town" id="stellie" value="stellie">
                         <label class="radioName" for="stellenbosch">Stellenbosch</label>
                     </div>
 
                     <br><br>
 
                     <button class="showBtn" type="submit">SHOW</button>
-                    <button class="showAllBtn" type="button">SHOW ALL</button>
                 </div>
+            </form>
+
+            <form action="/showAllTowns" method="GET">
+                <button class="showAllBtn" type="submit">SHOW ALL</button>
             </form>
 
             <form action="/reset" method="POST">

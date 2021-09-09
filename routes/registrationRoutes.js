@@ -1,4 +1,4 @@
-const eish = require('../regFactory');
+const eish = require('../regFactoryF');
 
 module.exports = function routes(registrationFactory){
     async function home(req, res, next){
@@ -25,19 +25,36 @@ module.exports = function routes(registrationFactory){
         res.redirect("/")
     }
 
-    // async function selectTheTown(req, res, next){
-    //     try{
-    //         if (req.body.town){
-    //             await registrationFactory.selectedTown(req.body.town)
-    //         }
-    //     } catch(error){
-    //         console.log(error);
-    //     }
-    // }
+    async function selectTheTown(req, res, next){
+        try{
+            if (req.body.town){
+                const regies = await registrationFactory.selectedTown(req.body.town)
+                res.render('index', {
+                    allReg: regies
+                })
+            } else if (!req.body.town){
+                req.flash('warning', "Please select the town below!")
+            }
+            
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    async function showAllTowns(req, res, next){
+        try {
+            res.render('index', {
+                allReg: await registrationFactory.getAllReg()
+            })
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
     async function reset(req, res, next) {
         try {
-            var resetAll = await registrationFactory.reset();
+            await registrationFactory.reset();
             res.redirect("/")
         }
         catch (error) {
@@ -49,7 +66,8 @@ module.exports = function routes(registrationFactory){
     return{
         home,
         display,
-        // selectTheTown,
+        selectTheTown,
+        showAllTowns,
         reset
     }
 }
