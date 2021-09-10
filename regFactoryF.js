@@ -11,11 +11,13 @@ module.exports = function registrationFactory(pool) {
         if (regNumber.rowCount === 0) {
             await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
         } 
-        // else if(regNums.rowCount === 1){
-        //     req.flash('warning', "Registration number already exists!");
-        // }
-        } else{
-            console.log("a");
+        else if(regNumber.rowCount === 1){
+            console.log("Registration number already exists!");
+            // req.flash('warning', "Registration number already exists!");
+        }
+        } 
+        else{
+            console.log("Please enter va;id registration number!");
         }
     }
 
