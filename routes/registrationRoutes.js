@@ -18,7 +18,10 @@ module.exports = function routes(registrationFactory){
                 req.flash('feedback', "Registration number successfully added!")
             } else if (!req.body.regText){
                 req.flash('warning', "Please enter registration number!");
-            }
+            } 
+            // else if (registrationFactory.enterReg(req.body.regText)){
+            //     req.flash('warning', "Please enter a valid registration using format provided!");
+            // }
         } catch (error){
             console.log(error);
         }

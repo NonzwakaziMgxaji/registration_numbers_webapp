@@ -2,9 +2,10 @@ module.exports = function registrationFactory(pool) {
 
     async function enterReg(regNum) {
         // var regPlate = regNum.toUpperCase();
-        // var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
-        // var testRegularExp = regex.test(regNum)
+        var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
+        var testRegularExp = regex.test(regNum)
 
+        if(testRegularExp){
         var regNumber = await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
         const townId = await checkStartsWith(regNum);
         if (regNumber.rowCount === 0) {
@@ -13,6 +14,9 @@ module.exports = function registrationFactory(pool) {
         // else if(regNums.rowCount === 1){
         //     req.flash('warning', "Registration number already exists!");
         // }
+        } else{
+            console.log("a");
+        }
     }
 
     async function getAllReg() {
