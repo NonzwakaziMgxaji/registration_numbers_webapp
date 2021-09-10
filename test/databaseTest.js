@@ -32,7 +32,7 @@ describe('The registration-webapp database', function () {
         await registration.enterReg("CY 654321");
         await registration.enterReg("CK 789456");
         await registration.enterReg("CA 222222");
-        assert.deepEqual([{"regnum": "CA 123456"}, {"regnum": "CA 222222"}], await registration.selectedTown("capetown"));
+        assert.deepEqual([{"regnum": "CA 123456"}, {"regnum": "CA 222222"}], await registration.selectedTown("Cape Town"));
     });
 
     it('should be able to reset the database', async function(){
