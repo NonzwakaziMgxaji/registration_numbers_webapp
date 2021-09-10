@@ -1,7 +1,7 @@
 module.exports = function registrationFactory(pool) {
 
     async function enterReg(regNum) {
-        var regNumber = await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
+        await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
         const townId = await checkStartsWith(regNum);
         // if (regNumber.rowCount === 0) {
             await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
