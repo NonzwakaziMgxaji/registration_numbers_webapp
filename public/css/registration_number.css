@@ -116,3 +116,74 @@ input[type="text"]{
     font-weight: bold;
     animation: errorDisappear 0s ease-in 3s forwards;
 }
+
+input[type="submit"]{
+    background:rgba(116, 111, 111, 0.5);
+    /* align-self: center; */
+    padding: 0.5rem;
+    /* margin: 0.5rem; */
+    /* border: none; */
+    cursor: pointer;
+    color: white;
+    border-radius: 1rem;
+    width: 10rem;
+    /* display: inline-block; */
+    /* text-decoration: none; */
+    margin-right: 1.9rem;
+}
+
+/* @media only screen and (min-width: 1024px){
+    input[type="submit"]{
+        background:rgba(116, 111, 111, 0.5);
+        padding: 0.5rem;
+        cursor: pointer;
+        color: white;
+        border-radius: 1rem;
+        width: 10rem;
+        margin-right: 1.9rem;
+    }
+} */
+
+/* 1254 */
+
+@media only screen and (max-width: 425px){
+    input[type="submit"]{
+        /* background:rgba(116, 111, 111, 0.5);
+        padding: 0.5rem;
+        cursor: pointer;
+        color: white;
+        border-radius: 1rem; */
+        width: 5rem;
+        /* margin-right: 1.9rem; */
+        margin-right: -1.0rem;
+        margin-left: 0rem;
+    }
+
+    .showAllBtn{
+        margin-right: 1rem;
+    }
+
+    .formsss{
+        flex-direction: column;
+        /* float: right; */
+        /* margin-top: -2.1rem; */
+        /* margin-left: 1.9rem; */
+    }
+}
+
+.showAllBtn{
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.resetBtn{
+    margin-left: 2.5rem;
+}
+
+
+.formsss{
+    display: flex;
+    float: right;
+    margin-top: -2.1rem;
+    /* margin-left: 1.9rem; */
+}

@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const flash = require('express-flash');
 const session = require('express-session');

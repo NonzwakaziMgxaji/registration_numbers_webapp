@@ -3,13 +3,13 @@ module.exports = function registrationFactory(pool) {
     async function enterReg(regNum) {
         var regNumber = await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
         const townId = await checkStartsWith(regNum);
-        if (regNumber.rowCount === 0) {
+        // if (regNumber.rowCount === 0) {
             await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
-        }
-        else {
-            console.log("Registration number already exists!");
-            // req.flash('warning', "Registration number already exists!");
-        }
+        // }
+        // else {
+        //     console.log("Registration number already exists!");
+        //     req.flash('warning', "Registration number already exists!");
+        // }
     }
 
     async function getAllReg() {
@@ -27,13 +27,13 @@ module.exports = function registrationFactory(pool) {
     async function selectedTown(radioBtn) {
         let reg;
 
-        if (radioBtn === "capetown") {
+        if (radioBtn === "Cape Town") {
             reg = await pool.query("select regNum from reg_numbers where town_code = $1", [1]);
-        } else if (radioBtn === "bellville") {
+        } else if (radioBtn === "Bellville") {
             reg = await pool.query("select regNum from reg_numbers where town_code = $1", [2]);
-        } else if (radioBtn === "malmesbury") {
+        } else if (radioBtn === "Malmesbury") {
             reg = await pool.query("select regNum from reg_numbers where town_code = $1", [3]);
-        } else if (radioBtn === "stellie") {
+        } else if (radioBtn === "Stellenbosch") {
             reg = await pool.query("select regNum from reg_numbers where town_code = $1", [4]);
         }
         return reg.rows;

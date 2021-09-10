@@ -30,7 +30,7 @@
                         placeholder="FORMAT: CA 123-456 / CY 123456/ CL 123 456">
                 </div><br>
 
-                <button class="addBtn" type="submit">ADD</button>
+                <input class="addBtn" type="submit" value="ADD">
                 <br><br>
             </form>
 
@@ -38,22 +38,22 @@
                 <div class=inputs>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="town" value="capetown">
+                        <input class="radio" type="radio" name="town" id="town" value="Cape Town">
                         <label class="radioName" for="capetown">Cape Town</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="town" value="bellville">
+                        <input class="radio" type="radio" name="town" id="town" value="Bellville">
                         <label class="radioName" for="bellville">Bellville</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="town" value="malmesbury">
+                        <input class="radio" type="radio" name="town" id="town" value="Malmesbury">
                         <label class="radioName" for="malmesbury">Malmesbury</label>
                     </div>
 
                     <div class=rad1>
-                        <input class="radio" type="radio" name="town" id="town" value="stellie">
+                        <input class="radio" type="radio" name="town" id="town" value="Stellenbosch">
                         <label class="radioName" for="stellenbosch">Stellenbosch</label>
                     </div>
 
@@ -63,13 +63,15 @@
                 <input class="showBtn" type="submit" value="SHOW">
             </form>
 
-            <form action="/showAllTowns" method="GET">
-                <button class="showAllBtn" type="submit">SHOW ALL</button>
-            </form>
+            <div class="formsss">
+                <form action="/showAllTowns" method="GET">
+                    <input class="showAllBtn" type="submit" value="SHOW ALL">
+                </form>
 
-            <form action="/reset" method="POST">
-                <button class="resetBtn" type="submit">RESET</button>
-            </form>
+                <form action="/reset" method="POST">
+                    <input class="resetBtn" type="submit" value="RESET">
+                </form>
+            </div>
             <br><br>
 
             {{#each allReg}}
