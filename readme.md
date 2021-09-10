@@ -1,0 +1,1 @@
+[![Build Status](https://app.travis-ci.com/NonzwakaziMgxaji/registration_numbers_webapp.svg?token=8ZzAhpyr5KAkqpFu3q5u&branch=master)](https://app.travis-ci.com/NonzwakaziMgxaji/registration_numbers_webapp)

@@ -16,7 +16,7 @@ describe('The registration-webapp database', function () {
         await pool.query("delete from reg_numbers;");
     });
     
-    it('should be able to set registration numbers and get them from database', async function () {
+    it('should be able to insert registration numbers and get them from database', async function () {
         await registration.enterReg("CA 123456");
         assert.deepEqual([{regnum: 'CA 123456'}], await registration.getAllReg())
     });
