@@ -25,14 +25,13 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
 
-// database connection to use
+// database connection
 const connectionString = process.env.DATABASE_URL || 'postgresql://nzwakie:Bokang2851!@localhost:5432/registration_numbers';
 
 const pool = new Pool({
@@ -54,7 +53,7 @@ app.use(session({
 app.use(flash());
 
 app.get('/', regRoutes.home);
-app.get('/reg_numbers', function(req, res){
+app.get('/reg_numbers', function (req, res) {
 });
 app.post('/reg_numbers', regRoutes.display);
 app.post('/selectTown', regRoutes.selectTheTown);

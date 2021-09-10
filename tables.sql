@@ -10,3 +10,8 @@ create table reg_numbers(
     town_code int not null,
     foreign key (town_code) references towns(id) 
 );
+
+INSERT INTO towns (town_name, startsWith_string) VALUES ('capetown', 'CA');
+INSERT INTO towns (town_name, startsWith_string) VALUES ('belville', 'CY');
+INSERT INTO towns (town_name, startsWith_string) VALUES ('malmesbury', 'CK');
+INSERT INTO towns (town_name, startsWith_string) VALUES ('stellenbosch', 'CL');

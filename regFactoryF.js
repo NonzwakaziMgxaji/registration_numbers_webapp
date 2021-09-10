@@ -6,7 +6,7 @@ module.exports = function registrationFactory(pool) {
         if (regNumber.rowCount === 0) {
             await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
         }
-        else if (regNumber.rowCount === 1) {
+        else {
             console.log("Registration number already exists!");
             // req.flash('warning', "Registration number already exists!");
         }

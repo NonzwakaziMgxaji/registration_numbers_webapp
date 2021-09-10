@@ -36,7 +36,6 @@ module.exports = function routes(registrationFactory) {
         try {
             let regies;
             if (req.body.town) {
-                console.log(req.body.town);
                 regies = await registrationFactory.selectedTown(req.body.town)
             } else {
                 req.flash('warning', "Please select the town below!")
@@ -70,7 +69,6 @@ module.exports = function routes(registrationFactory) {
             console.log(error);
         }
     }
-
 
     return {
         home,
