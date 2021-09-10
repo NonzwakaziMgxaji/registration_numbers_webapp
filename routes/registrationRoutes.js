@@ -21,10 +21,10 @@ module.exports = function routes(registrationFactory) {
                     req.flash('feedback', "Registration number successfully added!")
                 }
                 else {
-                    req.flash('warning', "Please enter valid registration number!");
+                    req.flash('warning', "Please enter valid registration number using provided format!");
                 }
             } else if (!req.body.regText) {
-                req.flash('warning', "Please enter registration number!");
+                req.flash('warning', "Please enter registration number below!");
             }
         } catch (error) {
             console.log(error);
@@ -34,15 +34,17 @@ module.exports = function routes(registrationFactory) {
 
     async function selectTheTown(req, res, next) {
         try {
+            let regies;
             if (req.body.town) {
-                const regies = await registrationFactory.selectedTown(req.body.town)
-                res.render('index', {
-                    allReg: regies
-                })
-            } else if (!req.body.town) {
+                console.log(req.body.town);
+                regies = await registrationFactory.selectedTown(req.body.town)
+            } else {
                 req.flash('warning', "Please select the town below!")
             }
 
+            res.render('index', {
+                allReg: regies
+            })
         } catch (error) {
             console.log(error);
         }

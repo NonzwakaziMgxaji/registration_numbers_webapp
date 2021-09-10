@@ -1,26 +1,15 @@
 module.exports = function registrationFactory(pool) {
 
     async function enterReg(regNum) {
-        // var regPlate = regNum.toUpperCase();
-        // var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
-        // var testRegularExp = regex.test(regNum)
-
-        // if (testRegularExp) {
-        //     console.log(testRegularExp);
-            var regNumber = await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
-            const townId = await checkStartsWith(regNum);
-            if (regNumber.rowCount === 0) {
-                await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
-            }
-            else if (regNumber.rowCount === 1) {
-                console.log("Registration number already exists!");
-                // req.flash('warning', "Registration number already exists!");
-            }
-        // }
-        // else {
-        //     console.log("Please enter valid registration number!");
-        //     // req.flash('warning', "Please enter valid registration number!");
-        // }
+        var regNumber = await pool.query("select regNum from reg_numbers where regNum = $1", [regNum])
+        const townId = await checkStartsWith(regNum);
+        if (regNumber.rowCount === 0) {
+            await pool.query('insert into reg_numbers (regNum, town_code) values($1, $2)', [regNum, townId])
+        }
+        else if (regNumber.rowCount === 1) {
+            console.log("Registration number already exists!");
+            // req.flash('warning', "Registration number already exists!");
+        }
     }
 
     async function getAllReg() {
