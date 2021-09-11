@@ -30,8 +30,7 @@
                         placeholder="FORMAT: CA 123-456 / CY 123456/ CL 123 456">
                 </div><br>
 
-                <input class="addBtn" type="submit" value="ADD">
-                <br><br>
+                <input class="addBtn" type="submit" value="ADD"><br><br>
             </form>
 
             <form action="/selectTown" method="POST">
@@ -55,9 +54,7 @@
                     <div class="col-3">
                         <input class="radio" type="radio" name="town" id="town" value="Stellenbosch">
                         <label class="radioName" for="stellenbosch">Stellenbosch</label>
-                    </div>
-
-                    <br><br>
+                    </div><br><br>
                 </div>
 
                 <input class="showBtn" type="submit" value="SHOW">
@@ -71,8 +68,7 @@
                 <form action="/reset" method="POST">
                     <input class="resetBtn" type="submit" value="RESET">
                 </form>
-            </div>
-            <br><br>
+            </div><br><br>
 
             {{#each allReg}}
             <p class="col-12 showRegNum" id="showRegNumID">{{this.regnum}}</p>

@@ -113,29 +113,6 @@ input[type="submit"]{
     margin-right: 1.9rem;
 }
 
-/* .showAllBtn{
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-} */
-
-/* .resetBtn{
-    margin-left: 2.5rem;
-} */
-
-
-/* .formsss{
-    float: right;
-    margin-top: -2.1rem;
-} */
-
-/* .row{
-    display:flex;
-} */
-
-/* .col-6{
-    display:flex;
-} */
-
 @media only screen and (max-width: 425px){
     .formsss{
         flex-direction: column; 
@@ -177,23 +154,13 @@ input[type="submit"]{
 }
 
 @media only screen and (min-width: 1001px){
-    /* input[type="submit"]{
-        width: 33%;
-    }
-
-    .col-6{
-        width: 100%;
-    } */
-
-    .row{
-        display: flex;
-    }
-
     .formsss{
         display: flex;
-        float: right;
+        margin-left: 11rem;
         margin-top: -2.1rem;
-        width: 50%;
-        /* width: 50%; */
+    }
+
+    .resetBtn{
+        margin-left: -1rem;
     }
 }
