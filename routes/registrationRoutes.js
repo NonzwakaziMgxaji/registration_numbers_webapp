@@ -2,9 +2,17 @@ const regNo = require('../regFactoryF');
 
 const pg = require("pg");
 const Pool = pg.Pool;
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local) {
+    useSSL = true;
+}
 const connectionString = process.env.DATABASE_URL || 'postgresql://nzwakie:Bokang2851!@localhost:5432/registration_numbers';
 const pool = new Pool({
     connectionString,
+    ssl: {
+        rejectUnauthorized: false,
+    }
 });
 
 module.exports = function routes(registrationFactory) {
