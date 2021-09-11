@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <section class=regNumWidget>
+        <section class="regNum">
             <h1>REGISTRATION NUMBERS WEBAPP</h1>
 
             <form action="/reg_numbers" method="POST">
@@ -35,24 +35,24 @@
             </form>
 
             <form action="/selectTown" method="POST">
-                <div class=inputs>
+                <div class="row inputs">
 
-                    <div class=rad1>
+                    <div class="col-3">
                         <input class="radio" type="radio" name="town" id="town" value="Cape Town">
                         <label class="radioName" for="capetown">Cape Town</label>
                     </div>
 
-                    <div class=rad1>
+                    <div class="col-3">
                         <input class="radio" type="radio" name="town" id="town" value="Bellville">
                         <label class="radioName" for="bellville">Bellville</label>
                     </div>
 
-                    <div class=rad1>
+                    <div class="col-3">
                         <input class="radio" type="radio" name="town" id="town" value="Malmesbury">
                         <label class="radioName" for="malmesbury">Malmesbury</label>
                     </div>
 
-                    <div class=rad1>
+                    <div class="col-3">
                         <input class="radio" type="radio" name="town" id="town" value="Stellenbosch">
                         <label class="radioName" for="stellenbosch">Stellenbosch</label>
                     </div>
@@ -75,7 +75,7 @@
             <br><br>
 
             {{#each allReg}}
-            <p class="showRegNum" id="showRegNumID">{{this.regnum}}</p>
+            <p class="col-12 showRegNum" id="showRegNumID">{{this.regnum}}</p>
             {{/each}}
         </section>
     </div>
