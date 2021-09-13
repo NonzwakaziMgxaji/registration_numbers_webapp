@@ -60,7 +60,7 @@ app.post('/selectTown', regRoutes.selectTheTown);
 app.get('/showAllTowns', regRoutes.showAllTowns)
 app.post('/reset', regRoutes.reset);
 
-const PORT = process.env.PORT || 3014
+const PORT = process.env.PORT || 3015
 
 app.listen(PORT, () => {
     console.log("App is running at port " + PORT)

@@ -29,7 +29,7 @@ module.exports = function routes(registrationFactory) {
     async function display(req, res, next) {
         try {
             if (req.body.regText) {
-                if ((await pool.query("select regNum from reg_numbers where regNum = $1", [req.body.regText])).rowCount === 0){
+                if (await registrationFactory.checkExistingReg(req.body.regText) === 0){
                     var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
                     var testRegularExp = regex.test(req.body.regText)
                     if (testRegularExp) {
@@ -53,6 +53,9 @@ module.exports = function routes(registrationFactory) {
     }
 
     async function selectTheTown(req, res, next) {
+    //    if((await pool.query("select regnum from reg_numbers where town_code = $1", [3]).rowCount === 0)){
+    //     req.flash('warning', "yeey!")
+    //    }
         try {
             let regies;
             if (req.body.town) {

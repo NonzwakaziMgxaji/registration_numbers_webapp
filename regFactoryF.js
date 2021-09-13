@@ -38,6 +38,11 @@ module.exports = function registrationFactory(pool) {
         return regreg.rowCount;
     }
 
+    async function checkExistingReg(reg) {
+        let regExist = await pool.query("select regNum from reg_numbers where regNum = $1", [reg])
+        return regExist.rowCount;
+    }
+
     async function reset() {
         var resetAll = await pool.query("delete from reg_numbers")
         return resetAll.rows;
@@ -49,6 +54,7 @@ module.exports = function registrationFactory(pool) {
         checkStartsWith,
         selectedTown,
         countReg,
-        reset
+        reset,
+        checkExistingReg
     }
 }
