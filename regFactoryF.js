@@ -20,9 +20,10 @@ module.exports = function registrationFactory(pool) {
 
     async function selectedTown(radioBtn) {
         let reg;
-
+        const id = req.params.id;
+        console.log(id +"derfghjkertyerty")
         if (radioBtn === "Cape Town") {
-            reg = await pool.query("select regNum from reg_numbers where town_code = $1", [1]);
+            reg = await pool.query("select regNum from reg_numbers where town_code = $1", [id]);
         } else if (radioBtn === "Bellville") {
             reg = await pool.query("select regNum from reg_numbers where town_code = $1", [2]);
         } else if (radioBtn === "Malmesbury") {
