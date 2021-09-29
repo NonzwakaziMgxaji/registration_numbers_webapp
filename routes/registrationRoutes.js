@@ -29,17 +29,19 @@ module.exports = function routes(registrationFactory) {
     async function display(req, res, next) {
         try {
             if (req.body.regText) {
-                if (await registrationFactory.checkExistingReg(req.body.regText) === 0){
+                await registrationFactory.checkExistingReg(req.body.regText)
+                if (await registrationFactory.checkExistingReg(req.body.regText) === 0) {
                     var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
                     var testRegularExp = regex.test(req.body.regText)
                     if (testRegularExp) {
-                        await registrationFactory.enterReg(req.body.regText)
+                        let regNumber = req.body.regText
+                        await registrationFactory.enterReg(regNumber)
                         req.flash('feedback', "Registration number successfully added!")
                     }
                     else {
                         req.flash('warning', "Please enter valid registration number using provided format!");
                     }
-                } 
+                }
                 else {
                     req.flash('warning', "Registration number already exists!");
                 }
@@ -53,21 +55,23 @@ module.exports = function routes(registrationFactory) {
     }
 
     async function selectTheTown(req, res, next) {
-    //    if((await pool.query("select regnum from reg_numbers where town_code = $1", [3]).rowCount === 0)){
-    //     req.flash('warning', "yeey!")
-    //    }
         try {
             let regies;
-            if (req.body.town) {
-                req.flash('feedback', "You've successfully displayed registration numbers of " + req.body.town)
-                regies = await registrationFactory.selectedTown(req.body.town)
+            const selectedTown = req.body.town;
+            if (selectedTown) {
+                if ((await registrationFactory.selectedTown(selectedTown)).length < 1) {
+                    req.flash('warning', "No registration number for this town yet!")
+                } else {
+                    req.flash('feedback', "You've successfully displayed all the registration numbers starting with " + selectedTown)
+                    regies = await registrationFactory.selectedTown(selectedTown)
+                }
+                res.render('index', {
+                    allReg: regies,
+                })
             } else {
                 req.flash('warning', "Please select the town below!")
+                res.redirect('/')
             }
-
-            res.render('index', {
-                allReg: regies
-            })
         } catch (error) {
             console.log(error);
         }
@@ -75,11 +79,14 @@ module.exports = function routes(registrationFactory) {
 
     async function showAllTowns(req, res, next) {
         try {
-            req.flash('feedback', "You've successfully displayed all registration numbers in the database!")
-            res.render('index', {
-                allReg: await registrationFactory.getAllReg()
-            })
-            
+            if ((await registrationFactory.getAllReg()).length < 1) {
+                req.flash('warning', "No registration numbers in the database!")
+            } else {
+                req.flash('feedback', "You've successfully displayed all registration numbers in the database!")
+                res.render('index', {
+                    allReg: await registrationFactory.getAllReg()
+                })
+            }
         }
         catch (error) {
             console.log(error);

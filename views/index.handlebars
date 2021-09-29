@@ -33,29 +33,17 @@
                 <input class="addBtn" type="submit" value="ADD"><br><br>
             </form>
 
-            <form action="/selectTown/{{id}}" method="GET">
+            <form action="/selectTown" method="POST">
                 <div class="row inputs">
-
-                    <div class="col-3">
-                        <input class="radio" type="radio" name="town" id="town" value="Cape Town">
-                        <label class="radioName" for="capetown">Cape Town</label>
-                    </div>
-
-                    <div class="col-3">
-                        <input class="radio" type="radio" name="town" id="town" value="Bellville">
-                        <label class="radioName" for="bellville">Bellville</label>
-                    </div>
-
-                    <div class="col-3">
-                        <input class="radio" type="radio" name="town" id="town" value="Malmesbury">
-                        <label class="radioName" for="malmesbury">Malmesbury</label>
-                    </div>
-
-                    <div class="col-3">
-                        <input class="radio" type="radio" name="town" id="town" value="Stellenbosch">
-                        <label class="radioName" for="stellenbosch">Stellenbosch</label>
-                    </div><br><br>
-                </div>
+                    <input class="radio" type="radio" name="town" id="town" value="CA">
+                    <label class="radioName">Cape Town</label>
+                    <input class="radio" type="radio" name="town" id="town" value="CY">
+                    <label class="radioName">Bellville</label>
+                    <input class="radio" type="radio" name="town" id="town" value="CK">
+                    <label class="radioName">Malmesbury</label>
+                    <input class="radio" type="radio" name="town" id="town" value="CL">
+                    <label class="radioName">Stellenbosch</label>
+                </div><br>
 
                 <input class="showBtn" type="submit" value="SHOW">
             </form>
