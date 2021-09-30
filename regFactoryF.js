@@ -12,14 +12,15 @@ module.exports = function registrationFactory(pool) {
     }
 
     async function checkStartsWith(regNums) {
-        regNums.toUpperCase();
-        let sub = regNums.substring(0, 2)
+        let upper = regNums.toUpperCase();
+        let sub = upper.substring(0, 2)
         let regId = await pool.query("select id from towns where startsWith_string = $1", [sub]);
         return regId.rows[0].id;
     }
 
     async function getAllReg() {
         var allTheRegies = await pool.query("select regNum from reg_numbers")
+        console.log(allTheRegies.rows);
         return allTheRegies.rows;
     }
 

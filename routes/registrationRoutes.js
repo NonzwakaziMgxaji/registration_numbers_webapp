@@ -31,7 +31,7 @@ module.exports = function routes(registrationFactory) {
             if (req.body.regText) {
                 await registrationFactory.checkExistingReg(req.body.regText)
                 if (await registrationFactory.checkExistingReg(req.body.regText) === 0) {
-                    var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
+                    var regex = /^((CA|ca|CY|cy|CK|ck|CL|cl)\s\d{3}\-\d{3})$|^((CA|ca|CY|cy|CK|ck|CL|cl)\s\d{3}\d{3})$|^((CA|ca|CY|cy|CK|ck|CL|cl)\s\d{3}\s\d{3})$/;
                     var testRegularExp = regex.test(req.body.regText)
                     if (testRegularExp) {
                         let regNumber = req.body.regText
@@ -60,7 +60,7 @@ module.exports = function routes(registrationFactory) {
             const selectedTown = req.body.town;
             if (selectedTown) {
                 if ((await registrationFactory.selectedTown(selectedTown)).length < 1) {
-                    req.flash('warning', "No registration number for this town yet!")
+                    req.flash('feedback', "No registration number for this town yet!")
                 } else {
                     req.flash('feedback', "You've successfully displayed all the registration numbers starting with " + selectedTown)
                     regies = await registrationFactory.selectedTown(selectedTown)
@@ -79,7 +79,7 @@ module.exports = function routes(registrationFactory) {
 
     async function showAllTowns(req, res, next) {
         try {
-            if ((await registrationFactory.getAllReg()).length < 1) {
+            if ((await registrationFactory.getAllReg()).length == null) {
                 req.flash('warning', "No registration numbers in the database!")
             } else {
                 req.flash('feedback', "You've successfully displayed all registration numbers in the database!")

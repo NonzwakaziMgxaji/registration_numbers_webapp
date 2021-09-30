@@ -37,7 +37,9 @@ describe('The registration-webapp database', function () {
     });
 
     it('should be able to reset the database', async function(){
-        await registration.getAllReg();
+        await registration.enterReg("CA 111111");
+        await registration.enterReg("CY 222222");
+        await registration.enterReg("CK 333333");
         assert.equal(0, await registration.reset())
     });
 
