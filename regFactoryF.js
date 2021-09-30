@@ -20,7 +20,6 @@ module.exports = function registrationFactory(pool) {
 
     async function getAllReg() {
         var allTheRegies = await pool.query("select regNum from reg_numbers")
-        console.log(allTheRegies.rows);
         return allTheRegies.rows;
     }
 
