@@ -79,10 +79,10 @@ module.exports = function routes(registrationFactory) {
 
     async function showAllTowns(req, res, next) {
         try {
-            req.flash('feedback', "You've successfully displayed all registration numbers in the database!")
-            res.render('index', {
-                allReg: await registrationFactory.getAllReg()
-            })
+                req.flash('feedback', "You've successfully displayed all registration numbers in the database!")
+                res.render('index', {
+                    allReg: await registrationFactory.getAllReg()
+                })
         }
         catch (error) {
             console.log(error);
